@@ -1,0 +1,284 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #4caf50;
+  }
+  
+  h2 {
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  h3 {
+    margin: 15px 0;
+    color: #555;
+  }
+  h4{
+    margin: 15px 0;
+    color: #4caf50;
+  }
+  h4-1{
+    margin: 15px 0;
+    color: #f44336;
+  }
+  /* Balance Section */
+  .balance {
+    background: #4caf50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+  }
+  .balance-container{
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 25px;    
+  
+  }
+  .balance h2:first-of-type {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #e0f2f1;
+  }
+  
+  .balance h2:last-of-type {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  /* Income and Expense Section */
+  .section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section div {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .section div:nth-child(1) {
+    color: #4caf50; /* Green for income */
+  }
+  
+  .section div:nth-child(2) {
+    color: #f44336; /* Red for expense */
+  }
+  
+  .section h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  
+  .section h2 {
+    font-size: 1.5rem;
+  }
+  
+  /* Add Transaction Section */
+  .add-transaction {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .add-transaction p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .add-transaction input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .add-transaction button {
+    width: 100%;
+    background: #4caf50;
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-transaction button:hover {
+    background: #45a049; /* Slightly darker green on hover */
+  }
+  
+  /* Transaction History */
+  .transaction-history {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .transaction-history ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .transaction-history li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .transaction-history li:last-child {
+    border-bottom: none;
+  }
+  
+  .transaction-history li span {
+    font-size: 1rem;
+  }
+  
+  .transaction-history li span.amount {
+    font-weight: bold;
+  }
+  
+  .transaction-history li span.amount.expense {
+    color: #f44336; /* Red for expense */
+  }
+  
+  .transaction-history li span.amount.income {
+    color: #4caf50; /* Green for income */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .balance, .section, .add-transaction, .transaction-history {
+      width: 95%;
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size:1.5rem; } }
+
+      table {
+        border-collapse: collapse;
+      }
+      td,
+      th {
+        border: 1px solid black;
+        padding: 10px 20px;
+      }
+/* Container for all rows and columns */
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  /* Columns inside the row */
+  .column {
+    width: 45%;
+  }
+  
+  /* Styling for income and expense sections */
+  .income-container, .expense-container {
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 25px;    
+  }
+  
+  h2, h3, h4 {
+    margin: 10px 0;
+  }
+  
+  /* Styling for buttons and inputs */
+  input[type="number"], input[type="name"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Styling for transaction history */
+  .transaction-container {
+    border-top: 2px solid #ccc;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+  }
+  
+  tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+.show-button-input{
+    display: none;
+}  
+.show-transaction-button{
+    display: none;
+}
+.expense-color{
+    color: #f44336;
+}

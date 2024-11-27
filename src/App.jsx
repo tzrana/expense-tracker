@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './app.css';
 
 function App() {
   const [balance, setBalance] = useState(0.0); // Total balance
@@ -18,6 +19,18 @@ function App() {
       setBalance(balance + newIncome);
       setIncomeInput(""); // Clear the input field
     }
+  }
+
+  // Toggle visibility of income input section
+  function showIncome() {
+    var x = document.getElementById("show-input-income");
+    x.style.display = x.style.display === "none" ? "block" : "none";
+  }
+
+  // Toggle visibility of expense input section
+  function showTransaction() {
+    var y = document.getElementById("show-transaction");
+    y.style.display = y.style.display === "none" ? "block" : "none";
   }
 
   // Handle adding expense
@@ -40,62 +53,95 @@ function App() {
 
   // Handle updating transaction name
   function handleTransaction(e) {
-    setTransactionName(e.target.value); // Update the transaction name based on input
+    const value = e.target.value;
+
+    // Regular expression to allow only letters, spaces, and basic punctuation
+    const regex = /^[A-Za-z\s'-]*$/;
+
+    if (regex.test(value)) {
+      setTransactionName(value); // Update the transaction name if valid
+    }
   }
 
   return (
     <>
       <h1>Expense Tracker</h1>
 
-      {/* Display Total Balance */}
-      <h2>Your Balance</h2>
-      <h2>${balance.toFixed(2)}</h2>
-
-      {/* Income Section */}
-      <h4>Income</h4>
-      <h2>${income.toFixed(2)}</h2>
-      <input
-        type="number"
-        value={incomeInput}
-        onChange={(e) => setIncomeInput(e.target.value)}
-        placeholder="Enter income"
-      />
-      <button onClick={handleIncome}>Set Income</button>
-
-      {/* Expense Section */}
-      <h4>Expense</h4>
-      <h2>${expense.toFixed(2)}</h2>
-
-      {/* Add New Transaction Section */}
-      <div>
-        <h3>Add New Transaction</h3>
-        <p>Name of Expense</p>
-        <input
-          type="text"
-          value={transactionName}
-          onChange={handleTransaction} // Use the handleTransaction function
-          placeholder="Enter Item Name"
-        />
-        <p>Amount</p>
-        <input
-          type="number"
-          value={expenseInput}
-          onChange={(e) => setExpenseInput(e.target.value)}
-          placeholder="Enter Expense Amount"
-        />
-        <button onClick={handleExpense}>Submit</button>
+      <div className="balance-container">
+        {/* Display Total Balance */}
+        <h2>Your Balance</h2>
+        <h2>${balance.toFixed(2)}</h2>
       </div>
 
-      {/* Optional: Transaction History */}
-      <div>
-        <h3>Transaction History</h3>
-        <ul>
-          {transactions.map((transaction, index) => (
-            <li key={index}>
-              {transaction.name} - ${transaction.amount.toFixed(2)} ({transaction.type})
-            </li>
-          ))}
-        </ul>
+      <div className="row">
+        <div className="column">
+          <div className="income-container">
+            {/* Income Section */}
+            <h3>Income</h3>
+            <h4>${income.toFixed(2)}</h4>
+
+            {/* Income input and set button */}
+            <div className="show-button-input" id="show-input-income" style={{ display: "none" }}>
+              <input
+                type="number"
+                value={incomeInput}
+                onChange={(e) => setIncomeInput(e.target.value)}
+                placeholder="Enter income"
+              />
+              <button onClick={handleIncome}>Set Income</button>
+            </div>
+
+            <button onClick={showIncome}>Add Amount</button>
+          </div>
+
+          {/* Expense Section */}
+          <div className="expense-container" >
+            <h3>Expense</h3>
+            <h4 className="expense-color">${expense.toFixed(2)}</h4>
+          </div>
+        </div>
+
+        {/* Transaction History Section */}
+        <div className="transaction-container">
+          {/* Add New Transaction Section */}
+          <div className="show-transaction-button" id="show-transaction" >
+            <h3>Add New Transaction</h3>
+            <p>Name of Expense</p>
+            <input
+              type="text"
+              value={transactionName}
+              onChange={handleTransaction}
+              placeholder="Enter Item Name"
+            />
+            <p>Amount</p>
+            <input
+              type="number"
+              value={expenseInput}
+              onChange={(e) => setExpenseInput(e.target.value)}
+              placeholder="Enter Expense Amount"
+            />
+            <button onClick={handleExpense}>Submit</button>
+          </div>
+          <button onClick={showTransaction}>Add Expense</button>
+
+          <h3>Transaction History</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {transactions.map((transaction, index) => (
+                <tr key={index}>
+                  <td>{transaction.name}</td>
+                  <td>${transaction.amount.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );
