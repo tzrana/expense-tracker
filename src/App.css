@@ -4,19 +4,22 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     color: #333;
+    justify-content: center;
     line-height: 1.6;
     text-align: center;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
               url('/background.jpg');
-    /* background-image: url('E:\My projects IK\expense-tracker\public\background.jpg'); Replace with your image path */
     background-size: cover; /* Make the image cover the entire element */
     background-position: center; /* Center the image */
     /* background-repeat: no-repeat; Prevent tiling */
     height: 100vh; /* Full viewport height */
     width: 100%; /* Full width */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 500px;
   }
   
-  
+
   
   h1 {
     font-size: 2.5rem;
@@ -53,17 +56,23 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     
   }
+  .balance-outer-container{
+    display: flex;
+    justify-content: center;
+  }
+  
   .balance-container{
     border: 2px solid #ccc;
-    padding: 20px;
+    padding: 10px;
     margin-bottom: 20px;
     background-color: #f9f9f9;
     border-radius: 25px;    
+    width: fit-content; 
   
   }
   .balance h2:first-of-type {
     font-size: 1.2rem;
-    font-weight: normal;
+    font-weight: bold;
     color: #e0f2f1;
   }
   
@@ -232,6 +241,8 @@ body {
     margin-bottom: 20px;
     background-color: #f9f9f9;
     border-radius: 25px;    
+    width: 50%;
+    
   }
   
   h2, h3, h4 {
@@ -240,7 +251,7 @@ body {
   
   /* Styling for buttons and inputs */
   input[type="number"], input[type="text"] {
-    width: 100%;
+    width: 80%;
     padding: 8px;
     margin: 5px 0;
     border-radius: 25px;
@@ -262,8 +273,10 @@ body {
   /* Styling for transaction history */
   .transaction-container {
     border-top: 2px solid #ccc;
-    padding: 20px;
+    padding: 30px;
     background-color: #f4f4f4;
+    border-radius: 15px;
+    width: 30%;
   }
   
   table {
@@ -272,9 +285,14 @@ body {
   }
   
   th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    border-style:hidden ;
+    width: 50%;
+    /* border-bottom: 1px solid #ddd; */
+    max-width: 150px; /* Set max width for the table cell */
+    word-wrap: break-word; /* Break long words */
+    white-space: normal; 
   }
   
   th {
@@ -296,4 +314,64 @@ body {
 }
 .income-btn{
   display: none;
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal container */
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+}
+
+/* Modal actions (buttons) */
+.modal-actions {
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  margin: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4caf50;
+  color: white;
 }
