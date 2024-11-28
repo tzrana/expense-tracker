@@ -7,7 +7,7 @@ body {
     line-height: 1.6;
     text-align: center;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-              url('E:/My projects IK/expense-tracker/public/background.jpg');
+              url('/background.jpg');
     /* background-image: url('E:\My projects IK\expense-tracker\public\background.jpg'); Replace with your image path */
     background-size: cover; /* Make the image cover the entire element */
     background-position: center; /* Center the image */
@@ -293,4 +293,7 @@ body {
 .expense-color{
     color: #f44336;
     font-weight: bold;
+}
+.income-btn{
+  display: none;
 }

@@ -18,19 +18,23 @@ function App() {
       setIncome(income + newIncome);
       setBalance(balance + newIncome);
       setIncomeInput(""); // Clear the input field
+
+       // Hide the input section after setting income
+    var x = document.getElementById("show-input-income");
+    x.style.display = "none";
     }
   }
 
   // Toggle visibility of income input section
   function showIncome() {
     var x = document.getElementById("show-input-income");
-    x.style.display = x.style.display === "none" ? "block" : "none";
+    x.style.display = "block";
   }
 
   // Toggle visibility of expense input section
   function showTransaction() {
     var y = document.getElementById("show-transaction");
-    y.style.display = y.style.display === "none" ? "block" : "none";
+    y.style.display = "block";
   }
 
   // Handle adding expense
@@ -48,6 +52,10 @@ function App() {
 
       setExpenseInput(""); // Clear the input field
       setTransactionName(""); // Clear transaction name input
+
+      // Hide the input section after setting income
+      var x = document.getElementById("show-transaction");
+      x.style.display = "none";
     }
   }
 
@@ -81,13 +89,14 @@ function App() {
             <h4>${income.toFixed(2)}</h4>
 
             {/* Income input and set button */}
-            <div className="show-button-input" id="show-input-income" style={{ display: "none" }}>
+            <div className="show-button-input" id="show-input-income" >
               <input
                 type="number"
                 value={incomeInput}
                 onChange={(e) => setIncomeInput(e.target.value)}
                 placeholder="Enter income"
               />
+              
               <button onClick={handleIncome}>Set Income</button>
             </div>
 
