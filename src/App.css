@@ -21,19 +21,6 @@ body {
 }
 
 
-/* Responsive Design */
-@media (max-width: 600px) {
-  .title
-  .balance-container
-  {
-    width: 95%;
-    padding: 15px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-}
 
 table {
   border-collapse: collapse;
@@ -144,6 +131,7 @@ button:hover {
 
 
 /* Styling for expense history */
+
 .transaction-container {
   border-top: 2px solid #ccc;
   padding: 30px;
@@ -216,3 +204,21 @@ tbody tr:hover {
   padding: 8px 15px;
   cursor: pointer;
 }
+
+
+/* Responsive Design */
+@media only screen and (max-width: 800px) and (min-width: 300px) {
+  .transaction-container
+  {
+    width: 100%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+  .row-1{
+    flex-direction: column;
+  }
+}
+
