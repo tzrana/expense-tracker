@@ -11,6 +11,7 @@ function App() {
   const [transactions, setTransactions] = useState([]); // List of transactions
   const [showIncomeModal, setShowIncomeModal] = useState(false);
   const [showExpenseModal, setShowExpenseModal] = useState(false);
+  const balanceColor = balance < 100 ? 'red' : 'darkblue';
 
   // Handle adding income
   function handleIncome() {
@@ -27,6 +28,10 @@ function App() {
   function handleExpense() {
     const newExpense = parseFloat(expenseInput); // Convert input to a number
     if (!isNaN(newExpense) && newExpense > 0 && transactionName.trim() !== "") { // Validate input and name
+      if (newExpense > balance) {
+        alert("Low Remaining balance.");
+        return;
+      }
       setExpense(expense + newExpense);
       setBalance(balance - newExpense);
 
@@ -56,41 +61,44 @@ function App() {
 
   return (
     <>
-    
-      <h1>Expense Tracker</h1>
-      
-      <div className="balance-outer-container">
-        <div className="balance-container">
-          {/* Display Total Balance */}
-          <h2>Current Balance</h2>
-          <h2>${balance.toFixed(2)}</h2>
+      <div className="title">
+        <h1>Expense Tracker</h1>
+      </div>
+      <div className="row-1">
+        {/* Balance Section */}
+        <div className="col">
+          <div className="balance-container">
+            <h2>Current Balance</h2>
+            <h3 style={{ color: balanceColor }}>${balance.toFixed(2)}</h3>
+          </div>
+        </div>
+
+        {/* Expense Section */}
+        <div className="col">
+          <div className="expense-container">
+            <h2>Expense</h2>
+            <h3 className="expense-color">${expense.toFixed(2)}</h3>
+          </div>
+        </div>
+
+        {/* Income Section */}
+        <div className="col">
+          <div className="income-container">
+            <h2>Income</h2>
+            <h3>${income.toFixed(2)}</h3>
+          </div>
         </div>
       </div>
 
-      <div className="row">
-        <div className="column">
-          <div className="income-container">
-            {/* Income Section */}
-            <h3>Income</h3>
-            <h4>${income.toFixed(2)}</h4>
-            {/* Button to open the income modal */}
-            <button onClick={() => setShowIncomeModal(true)}>New Income</button>
-          </div>
-
-          <div className="expense-container">
-            {/* Expense Section */}
-            <h3>Expense</h3>
-            <h4 className="expense-color">${expense.toFixed(2)}</h4>
-          </div>
-
-        </div>
+      <div className="row-2">
 
         <div className="transaction-container">
-          <h3>Add New Expenses</h3>
-          {/* Button to open the expense modal */}
+          <h3>Add New Amount</h3>
+          {/* Button to open the expense/income modal */}
           <button onClick={() => setShowExpenseModal(true)}>New Expense</button>
+          <button onClick={() => setShowIncomeModal(true)}>New Income</button>
           <h3>Expense History</h3>
-          
+
           <table>
             <thead>
               <tr>
@@ -107,7 +115,7 @@ function App() {
               ))}
             </tbody>
           </table>
-         
+
         </div>
       </div>
 
@@ -118,19 +126,19 @@ function App() {
           value={incomeInput}
           onChange={(e) => setIncomeInput(e.target.value)}
           onSubmit={handleIncome}
-          onCancel={() => setShowIncomeModal(false)}
+          onCancel={() => {setShowIncomeModal(false); setIncomeInput("");}}
           placeholder="Enter income"
         />
       )}
 
       {/* Modal for Expense */}
-      {showExpenseModal && (
+      {showExpenseModal && balance > 0 && (
         <Modal
           title="Enter Expense"
           value={expenseInput}
           onChange={(e) => setExpenseInput(e.target.value)}
           onSubmit={handleExpense}
-          onCancel={() => setShowExpenseModal(false)}
+          onCancel={() => {setShowExpenseModal(false); setExpenseInput(""); setTransactionName("");}}
           placeholder="Enter expense amount"
           extraInput={
             <>
