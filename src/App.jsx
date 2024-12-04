@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import { addTransaction, getTransactions, deleteTransaction, editTransaction } from "./api";
-// import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-// import { ChevronDownIcon } from '@heroicons/react/20/solid'
-
 import './app.css';
 
 function App() {
@@ -189,7 +186,7 @@ function App() {
       <div className="text-4xl sm:text-5xl lg:text-6xl text-center text-teal-400 my-4 sm:my-6 lg:mt-2">
       <h1>Expense Tracker</h1>
     </div>
-    <div className="flex flex-wrap gap-4 sm:gap-6 justify-center mb-8 px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col sm:flex-row gap-10 justify-center mb-8 px-4">
       <div className="flex-1 bg-white border border-gray-300 rounded-lg shadow-md p-4 sm:p-6 min-h-[8rem] sm:min-h-[10rem] max-h-[12rem] flex flex-col items-center">
         <h2 className="text-lg sm:text-xl font-bold mb-2">Current Balance</h2>
         <h3 className={`${balanceColor} font-bold text-lg sm:text-xl`}>${balance.toFixed(2)}</h3>
@@ -204,8 +201,8 @@ function App() {
       </div>
     </div>
 
-    <div className="flex justify-center px-4 sm:px-6 lg:px-8 pb-4">
-      <div className="bg-gray-200 border border-gray-400 rounded-lg shadow-md  md:w-auto p-4 sm:p-4 w-full sm:w-1/4 lg:w-1/2">
+    <div className="px-4 pb-4 flex justify-center">
+      <div className="bg-gray-200 border border-gray-400 rounded-lg shadow-md p-4 w-full md:w-1/2">
         <h3 className="text-lg sm:text-xl font-bold mb-4 text-center">Add New Amount</h3>
         <div className="flex flex-wrap justify-center gap-4 mb-6">
           <button
@@ -222,15 +219,16 @@ function App() {
           </button>
         </div>
         <h3 className="text-base sm:text-lg font-bold text-center mb-4">Expense History</h3>
-        <table className="table-auto w-full border-separate">
+        <div className="table-container overflow-scroll no-scrollbar">
+        <table className="border-separate text-center ">
           <thead>
             <tr>
-              <th className="bg-gray-300 p-2 text-xs sm:text-sm">Name</th>
-              <th className="bg-gray-300 p-2 text-xs sm:text-sm">Amount</th>
-              <th className="bg-gray-300 p-2 text-xs sm:text-sm">Tags</th>
-              <th className="bg-gray-300 p-2 text-xs sm:text-sm">Delete</th>
-              <th className="bg-gray-300 p-2 text-xs sm:text-sm">Edit</th>
-              <th className="bg-gray-300 p-2 text-xs sm:text-sm">
+              <th className="bg-gray-300 p-2 w-1/2 max-w-[150px] break-words whitespace-normal text-xs sm:text-sm">Name</th>
+              <th className="bg-gray-300 p-2 w-1/2 max-w-[150px] break-words whitespace-normal text-xs sm:text-sm">Amount</th>
+              <th className="bg-gray-300 p-2 w-1/2 max-w-[150px] break-words whitespace-normal text-xs sm:text-sm">Tags</th>
+              <th className="bg-gray-300 p-2 w-1/2 max-w-[150px] break-words whitespace-normal text-xs sm:text-sm">Delete</th>
+              <th className="bg-gray-300 p-2 w-1/2 max-w-[150px] break-words whitespace-normal text-xs sm:text-sm">Edit</th>
+              <th className="bg-gray-300 p-2 w-1/2 max-w-[150px] break-words whitespace-normal text-xs sm:text-sm">
                 <select
                   id="filter"
                   value={filter}
@@ -247,9 +245,9 @@ function App() {
           <tbody>
             {filteredTransactions.map((transaction, index) => (
               <tr key={index} className="hover:bg-gray-100">
-                <td className="p-2 uppercase text-xs sm:text-sm">{transaction.name}</td>
-                <td className="p-2 text-xs sm:text-sm">${transaction.amount}</td>
-                <td className="p-2">
+                <td className="p-2 uppercase w-1/2 break-words whitespace-normal max-w-[150px] text-xs sm:text-sm">{transaction.name}</td>
+                <td className="p-2 text-xs w-1/2 break-words whitespace-normal max-w-[150px] sm:text-sm">${transaction.amount}</td>
+                <td className="p-2 w-1/2 break-words whitespace-normal">
                   {transaction.type === "income" ? (
                     <span className="inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-300">
                       Income
@@ -280,6 +278,7 @@ function App() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
 
@@ -375,7 +374,7 @@ function Modal({ title, value, onChange, onSubmit, onCancel, placeholder, extraI
           className="border border-gray-300 rounded-lg p-2 w-full mb-4"
         />
         <div className="flex justify-center">
-          <button onClick={onSubmit} className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+          <button onClick={onSubmit} className="bg-green-500 text-white px-4 py-2 mx-4 p-2 rounded-lg hover:bg-green-700">
             Submit
           </button>
           <button onClick={onCancel} className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700">

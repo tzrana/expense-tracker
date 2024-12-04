@@ -1,178 +1,25 @@
-
-
-/* Global Styles */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  justify-content: center;
-  line-height: 1.6;
-  text-align: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/background.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 100%;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  min-height: 500px;
-}
-.title{
-  color: #5dbea3;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-table {
-  border-collapse: collapse;
-}
+/* Global Styles */
+body {
 
-td,
-th {
-  border: 1px solid black;
-  padding: 10px 20px;
-}
-
-/* Container for all rows and columns */
-.row-1 {
-  display: flex;
-  flex-wrap: wrap; /* Ensure columns wrap on smaller screens */
-  gap: 20px; /* Space between columns */
-  margin: 20px;
-}
-
-.col {
-  flex: 1;
-
-}
-
-.row-2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding: 20px;
-}
-
-
-
-/*containers updated start*/
-.balance-container,
-.expense-container,
-.income-container {
-  flex: 1; /* Equal width for all containers */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 10rem; /* Set a uniform height */
-  max-height: 15rem;
-  background-color: white;
-  border: 2px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 10px; /* Add some spacing between the containers */
-}
-
-
-/*containers updated end*/
-
-.balance-container h2,
-.expense-container h2,
-.income-container h2 {
-  margin: 5px 0;
-  font-size: 1.5rem;
-  font-weight: bold;
-  
-}
-.balance-container h3{
-  color: darkblue;
-  font-weight: bold;
-  word-wrap: break-word;
-  margin: 5px 0;
-}
-.income-container h3 {
-  color: green; /* Income color */
-  font-weight: bold;
-  word-wrap: break-word;
-  margin: 5px 0; /* Add consistent spacing */
-}
-
-
-.expense-container h3 {
-  color: red; /* Expense color */
-  font-weight: bold;
-  word-wrap: break-word;
-  margin: 5px 0; /* Add consistent spacing */
-}
-
-
-
-
-/* Styling for buttons and inputs */
-input[type="number"],
-input[type="text"] {
-  width: 80%;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 25px;
-}
-
-button {
-  background-color: #5dbea3;
-  color: white;
-  padding: 10px;
-  margin: 10px;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-
-/* Styling for expense history */
-
-.transaction-container {
-  border-top: 2px solid #ccc;
-  padding: 30px;
-  background-color: #f4f4f4;
-  border-radius: 15px;
-  width: 30%;
-}
-
-
-table {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/background.jpg');
+  background-size: cover;
+  background-position: center;
   width: 100%;
-  border-collapse: collapse;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  /* text-align: center; */
+  /* justify-content: center; */
+  /* height: 100vh; */
+  /* min-height: 500px; */
 }
-
-th,
-td {
-  padding: 10px;
-  text-align: center;
-  border-style: hidden;
-  width: 50%;
-
-  max-width: 150px;
-  word-wrap: break-word;
-  white-space: normal;
-}
-
-th {
-  background-color: #f0f0f0;
-}
-
-tbody tr:hover {
-  background-color: #f1f1f1;
-}
-
-
-
-
 
 /* Modal overlay */
 .modal-overlay {
@@ -202,27 +49,19 @@ tbody tr:hover {
 .modal-actions {
   margin-top: 10px;
 }
-
 .modal-actions button {
   margin: 5px;
   padding: 8px 15px;
   cursor: pointer;
 }
 
-
-/* Responsive Design */
-@media only screen and (max-width: 800px) and (min-width: 300px) {
-  .transaction-container 
-  {
-    width: 100%; 
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-  .row-1{
-    flex-direction: column;
-  }
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
