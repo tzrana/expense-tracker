@@ -243,7 +243,7 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {filteredTransactions.map((transaction, index) => (
+            {filteredTransactions.map((transaction, index) => ( 
               <tr key={index} className="hover:bg-gray-100">
                 <td className="p-2 uppercase w-1/2 break-words whitespace-normal max-w-[150px] text-xs sm:text-sm">{transaction.name}</td>
                 <td className="p-2 text-xs w-1/2 break-words whitespace-normal max-w-[150px] sm:text-sm">${transaction.amount}</td>
