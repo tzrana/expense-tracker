@@ -205,7 +205,7 @@ function App() {
     </div>
 
     <div className="flex justify-center px-4 sm:px-6 lg:px-8 pb-4">
-      <div className="bg-gray-200 border border-gray-400 rounded-lg shadow-md  md:w-auto p-4 sm:p-6 w-full sm:w-3/4 lg:w-1/2">
+      <div className="bg-gray-200 border border-gray-400 rounded-lg shadow-md  md:w-auto p-4 sm:p-4 w-full sm:w-1/4 lg:w-1/2">
         <h3 className="text-lg sm:text-xl font-bold mb-4 text-center">Add New Amount</h3>
         <div className="flex flex-wrap justify-center gap-4 mb-6">
           <button
