@@ -1,3 +1,5 @@
+
+
 /* Global Styles */
 body {
   margin: 0;
@@ -20,7 +22,9 @@ body {
   color: #5dbea3;
 }
 
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 table {
   border-collapse: collapse;
@@ -208,9 +212,9 @@ tbody tr:hover {
 
 /* Responsive Design */
 @media only screen and (max-width: 800px) and (min-width: 300px) {
-  .transaction-container
+  .transaction-container 
   {
-    width: 100%;
+    width: 100%; 
     padding: 20px;
   }
 
